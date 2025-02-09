@@ -6,17 +6,17 @@ Date last edited: The date you submitted it
 Version: 1.0
 Description: Medical industry Form
 */
-/* Set a backkground color to blue*/
+/* Set a backkground color to blue* FOnt taken from w3 */
 body {
     background-color:   lightblue; 
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
     color: #333;
 }
 
 
 /* Style headings with a specific font and color */
 h2 {
-    font-family: Georgia, serif;
+    font-family: 'Courier New', monospace;
     color: #006699;
 }
 
@@ -38,13 +38,6 @@ a:visited {
     color: #770077;
 }
 
-/* Example of a class selector */
-.format {
-    margin: 20px auto;
-    width: 80%;
-    border: 2px solid black; /* Adds a 2px solid black border around the table */
-    border-collapse: collapse; /* Merges adjacent cell borders */
-}
 
 /* Example of an attribute selector */
 input[name="fname"] {
