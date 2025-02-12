@@ -1,17 +1,10 @@
-/* Reset default browser styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Simple test style */
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
 }
 
-/* Header and Navigation */
+/* Header styles */
 header {
   background: #fff;
   padding: 20px 40px;
@@ -19,19 +12,12 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 100;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .logo {
   font-size: 1.8em;
   font-weight: bold;
-  color: #000; /* Changed from blue to black */
+  color: #000; /* Changed to black */
 }
 
 .nav-links {
@@ -46,57 +32,48 @@ nav {
 .nav-links a {
   text-decoration: none;
   color: #333;
-  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #000; /* Changed from blue to black */
+  color: #000; /* Changed to black */
 }
 
 /* Hero Section */
 .hero {
   background: url('https://via.placeholder.com/1920x1080?text=Your+Image') no-repeat center center/cover;
   height: 100vh;
+  padding-top: 80px; /* Account for fixed header */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 20px;
-  margin-top: 80px; /* Offset for fixed header */
 }
 
 .hero-content h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
   color: #fff;
+  font-size: 3em;
 }
 
 .hero-content p {
-  font-size: 1.2em;
-  margin-bottom: 30px;
   color: #fff;
+  font-size: 1.2em;
 }
 
-/* Hero Buttons */
+/* Hero Buttons with UH logo background */
 .hero-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+  position: relative;
+  display: inline-block;
   padding: 20px;
-  position: relative; /* For positioning the background logo */
+  margin-top: 20px;
 }
 
-/* UH Logo Background Behind the Buttons */
 .hero-buttons::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: url('https://via.placeholder.com/300x80?text=UH+Logo') no-repeat center center;
   background-size: contain;
-  opacity: 0.2; /* Adjust opacity as needed */
+  opacity: 0.2;
   z-index: -1;
 }
 
@@ -105,192 +82,11 @@ nav {
   color: #fff;
   padding: 15px 30px;
   text-decoration: none;
-  font-size: 1em;
   border-radius: 5px;
   transition: background 0.3s ease;
+  margin: 0 10px;
 }
 
 .btn:hover {
   background: #0056b3;
-}
-
-/* About Section */
-.about {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.about h2 {
-  margin-bottom: 20px;
-  font-size: 2.5em;
-}
-
-.about p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.1em;
-  line-height: 1.8;
-}
-
-/* Experience Section */
-.experience {
-  padding: 60px 20px;
-  text-align: center;
-  background: #f9f9f9;
-}
-
-.experience h2 {
-  margin-bottom: 40px;
-  font-size: 2.5em;
-}
-
-.experience-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.experience .card {
-  background: #fff;
-  padding: 20px;
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Projects Section */
-.projects {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.projects h2 {
-  margin-bottom: 40px;
-  font-size: 2.5em;
-}
-
-.project-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.projects .card {
-  background: #fff;
-  padding: 20px;
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Contact Section */
-.contact {
-  padding: 60px 20px;
-  text-align: center;
-  background: #f4f4f4;
-}
-
-.contact h2 {
-  margin-bottom: 40px;
-  font-size: 2.5em;
-}
-
-.contact form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact input,
-.contact textarea {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-  width: 100%;
-}
-
-.contact button {
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background: #007BFF;
-  color: #fff;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.contact button:hover {
-  background: #0056b3;
-}
-
-/* Footer */
-footer {
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-
-/* Classwork Section */
-.classwork {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.classwork h1 {
-  font-size: 2.5em;
-  margin-bottom: 40px;
-}
-
-.folder-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.folder {
-  text-decoration: none;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.folder:hover {
-  transform: scale(1.05);
-}
-
-.folder img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-}
-
-.folder p {
-  margin-top: 10px;
-  font-size: 1.1em;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5em;
-  }
-  .hero-content p {
-    font-size: 1em;
-  }
-  .experience-cards,
-  .project-cards,
-  .folder-container {
-    flex-direction: column;
-    align-items: center;
-  }
 }
