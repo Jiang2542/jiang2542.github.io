@@ -57,7 +57,7 @@ nav {
 
 /* Hero Section */
 .hero {
-  background: url('https://via.placeholder.com/1920x1080?text=Your+Image') no-repeat center center/cover;
+  background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTjR7hZGeZbA&psig=AOvVaw30J4UPpZdYifNBWBjXpWnm&ust=1739486585709000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJjmz9Kav4sDFQAAAAAdAAAAABAI') no-repeat center center/cover;
   height: 100vh;
   padding-top: 80px; /* Account for fixed header */
   display: flex;
