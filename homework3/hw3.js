@@ -1,9 +1,9 @@
-//Program name: hw2.js
+//Program name: hw3.js
 //Author: Kevin Jiang
 //Date created: 03/01/2025
 //Date last edited: 03/09/2025
 //Version: 2.0
-//Description: Homework 2 JS file.
+//Description: Homework 3 JS file.
 // this is a supliment file to my HTML to check validation.
 function updateSickCount(value) { // shows the amount of sick days form the slider the patient selects.
    document.getElementById("sickCountDisplay").innerHTML = value;
