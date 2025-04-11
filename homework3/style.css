@@ -1,0 +1,32 @@
+/*
+Program name: style.css
+Author: Kevin Jiang
+Date created: 01/29/2025
+Date last edited: The date you submitted it
+Version: 1.4
+Description: Medical industry Form CSS 
+*/
+/* Set a backkground color to blue* FOnt taken from w3 */
+body {
+    background-color:   lightblue; 
+    font-family: 'Courier New', monospace;
+    color: #333;
+}
+
+/* Style the footer with its own background and text color */
+footer {
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Style hyperlinks (unvisited and visited) */
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #770077;
+}
