@@ -81,8 +81,7 @@ Description: Medical industry Form
       placeholder="Last Name"
       style="width: 150px;"
     />
-    <br />
-    <span class="error" id="fname-error" style="margin-right: 55px;"></span><br>
+    <span class="error" id="fname-error" style="margin-right: 55px;"></span>
     <span class="error" id="mini-error" style="margin-right: 60px;"></span><br>
     <span class="error" id="lname-error"></span><br>
   </td>
@@ -133,43 +132,33 @@ Description: Medical industry Form
                     onblur="validateSsn()"
                   />
                   <span class="error" id="ssn-error"></span>
-              <tr>
-                <td>
-                  <label for="phone">Phone Number:</label>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    minlength="12"
-                    maxlength= "12"
-                    onblur="validatePhone()"
-                    oninput="validatePhone()"
-                    required
-                  />
-                  <span class="error" id="phone-error"></span>
-
-              
-                </td>
-              </tr>
+     <tr>
+        <td><label for="phone">Phone:</label></td>
+        <td>
+    <input
+      type="text"
+      id="phone"
+      name="phone"
+      placeholder="000-000-0000"
+      onblur="validatePhone()"
+      oninput="validatePhone()"
+    />
+    <span class="error" id="phone-error"></span>
+        </td>
+      </tr>
               <tr>
   <td><label for="cemail">Email:</label></td>
   <td colspan="3">
-    <input
-      type="email"
-      name="cemail"
-      id="cemail"
-      maxlength="30"
-      minlength="5"
-      required
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$"
-      onblur="validateEmail()"
-      oninput="validateEmail()"
-      placeholder="example@email.com"
-      style="width: 300px;"
-    />
-    <span class="error" id="email-error"></span>
+<input
+  type="email"
+  id="cemail"
+  name="cemail"
+  required
+  placeholder="example@email.com"
+  onblur="validateEmail()"
+  oninput="validateEmail()"
+/>
+<span class="error" id="email-error"></span>
   </td>
 </tr>
               <tr>
@@ -185,6 +174,7 @@ Description: Medical industry Form
               </tr>
               <tr>
                 <td>
+                  <br>
                   <label for="address1">Address:</label>
                 </td>
                 <td>
@@ -199,7 +189,7 @@ Description: Medical industry Form
                     placeholder="Address 1"
                     onblur="validateAddress1()"
                   />
-                  <span class="error" id="address1-error"></span>
+                  
                   
                   <label for="address2">Address 2(if applicable):</label>
                   <input
@@ -212,7 +202,6 @@ Description: Medical industry Form
                     placeholder="Address 2"
                     onblur="validateAddress2()"
                   />
-                  <span class="error" id="address2-error"></span>
                 </td>
               </tr>
               <tr>
@@ -287,7 +276,7 @@ Description: Medical industry Form
                     placeholder="City"
                     onblur="validateCity()"
                   />
-                  <span class="error" id="city-error"></span>
+
                   <label for="ZipCode">Zip:</label>
                   <input
                     type="text"
@@ -301,7 +290,12 @@ Description: Medical industry Form
                     pattern="^\d{5}(-\d{4})?$"
                     onblur="validateZcode()"
                   />
+                  <span class="error" id="address1-error"></span>
+                  <span class="error" id="address2-error"></span>
                   <span class="error" id="zcode-error"></span>
+                  <span class="error" id="city-error"></span>
+                  <br>
+
                 </td>
               </tr>
               <tr>
@@ -380,6 +374,7 @@ Description: Medical industry Form
                     onblur="validateUid()"
                   />
                   <span class="error" id="uid-error"></span>
+                  <br>
                 </td>
               </tr>
               <tr>
@@ -423,24 +418,21 @@ Description: Medical industry Form
 
   </td>
 </tr>
-                          <tr>
-                <td colspan="4">
-                  <center>
-                    <input
-                      type="button"
-                      name="review"
-                      id="review"
-                      value="Review"
-                      onclick="reviewInput()"
-                    />
-                    <input
-                      type="button"
-                      id="validate"
-                      value="Validate & Submit"
-                      onclick="validateEverything()"
-                    />
-<input type="submit" name="submit" id="submit" style="display: none;" />
-                    <input type="reset" name="reset">
+      <tr>
+        <td colspan="2" style="text-align:center; padding-top: 1em;">
+          <input
+            type="button"
+            id="validate"
+            value="Validate & Submit"
+            onclick="validateEverything()"
+          />
+          <input
+            type="submit"
+            id="submit"
+            value="Submit"
+            style="display: none;"
+            disabled
+          />                  <input type="reset" name="reset">
                     <div class="pword-message">
                       <span id="msg1"></span> <br />
                       <span id="msg2"></span> <br />
@@ -468,7 +460,7 @@ Description: Medical industry Form
       </footer>
     </div>
 
-    <script src="hw3.js"></script>
+    <script src="hw2.js"></script>
     <div id="alert-box">
   <div id="alert-content">
     <h4>Please fill out all required fields correctly before submitting.</h4>
