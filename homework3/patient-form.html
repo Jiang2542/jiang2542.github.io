@@ -20,7 +20,13 @@ Description: Medical industry Form
           <tr>
             <td valign="top" align="center" width="20%">
               <div class="image">
-                <img align="center" src="logo.png" alt="Jiangster Medical Center" width="100px" id="logo"/> <!-- adds image -->
+                <img
+                  align="center"
+                  src="logo.png"
+                  alt="Jiangster Medical Center"
+                  width="100px"
+                  id="logo"
+                /> <!-- adds image -->
               </div>
             </td>
             <td>
@@ -40,15 +46,10 @@ Description: Medical industry Form
         <center>
           <div class="format">
             <table>
+              <!-- First Name Row -->
               <tr>
-                <th colspan="4">Create Account</th>
-              </tr>
-              <tr>
-                <td>
-                  <label for="name">Name:</label>
-                </td>
-                <td>
-                  <!-- First Name -->
+                <td><label for="fname">Name:</label></td>
+                <td colspan="3">
                   <input
                     type="text"
                     name="fname"
@@ -56,25 +57,23 @@ Description: Medical industry Form
                     minlength="1"
                     maxlength="30"
                     required
-                    title="Letter, apostrophes, and dashes only"
-                    pattern="[a-zA-Z']{1,30}"
+                    pattern="[a-zA-Z'\-]{1,30}"
                     onblur="validateFname()"
+                    oninput="validateFname()"
                     placeholder="First Name"
+                    style="margin-right: 10px; width: 150px;"
                   />
-                  <span class="error" id="fname-error"></span>
-                  <!-- Middle Name -->
                   <input
                     type="text"
                     name="mname"
                     id="mname"
                     maxlength="1"
-                    title="Letters only"
-                    pattern="[a-zA-Z']{0,1}"
+                    pattern="[a-zA-Z]{0,1}"
                     onblur="validateMname()"
+                    oninput="validateMname()"
                     placeholder="M"
+                    style="margin-right: 10px; width: 40px;"
                   />
-                  <span class="error" id="mini-error"></span>
-                  <!-- Last Name -->
                   <input
                     type="text"
                     name="lname"
@@ -82,12 +81,16 @@ Description: Medical industry Form
                     minlength="1"
                     maxlength="30"
                     required
-                    title="Letter, apostrophes, and dashes only"
-                    pattern="[a-zA-Z']{1,30}"
+                    pattern="[a-zA-Z'\-]{1,30}"
                     onblur="validateLname()"
+                    oninput="validateLname()"
                     placeholder="Last Name"
+                    style="width: 150px;"
                   />
-                  <span class="error" id="lname-error"></span>
+                  <br />
+                  <span class="error" id="fname-error" style="margin-right: 55px;"></span><br>
+                  <span class="error" id="mini-error" style="margin-right: 60px;"></span><br>
+                  <span class="error" id="lname-error"></span><br>
                 </td>
               </tr>
               <tr>
@@ -124,7 +127,7 @@ Description: Medical industry Form
                   <input
                     type="password"
                     minlength="9"
-                    maxlength="11"
+                    maxlength="9"
                     name="ssn"
                     id="ssn"
                     required
@@ -133,6 +136,8 @@ Description: Medical industry Form
                     onblur="validateSsn()"
                   />
                   <span class="error" id="ssn-error"></span>
+                </td>
+              </tr>
               <tr>
                 <td>
                   <label for="phone">Phone Number:</label>
@@ -142,17 +147,18 @@ Description: Medical industry Form
                     type="text"
                     id="phone"
                     name="phone"
-                    minlength="10"
-                    maxlength= "10"
+                    minlength="12"
+                    maxlength="12"
                     onblur="validatePhone()"
                     oninput="validatePhone()"
                     required
                   />
                   <span class="error" id="phone-error"></span>
-
-                
-            
-                  <label for="email">Email:</label>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="cemail">Email:</label></td>
+                <td colspan="3">
                   <input
                     type="email"
                     name="cemail"
@@ -162,7 +168,10 @@ Description: Medical industry Form
                     required
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$"
                     onblur="validateEmail()"
-                  >
+                    oninput="validateEmail()"
+                    placeholder="example@email.com"
+                    style="width: 300px;"
+                  />
                   <span class="error" id="email-error"></span>
                 </td>
               </tr>
@@ -194,7 +203,6 @@ Description: Medical industry Form
                     onblur="validateAddress1()"
                   />
                   <span class="error" id="address1-error"></span>
-                  
                   <label for="address2">Address 2(if applicable):</label>
                   <input
                     type="text"
@@ -344,17 +352,17 @@ Description: Medical industry Form
                   <label for="range">How many times have you been sick in the past year?<br />(Rate from 1 to 10)</label>
                 </td>
                 <td>
-      <input
-        type="range"
-        name="range"
-        id="range"
-        min="0"
-        max="10"
-        value="5"
-        oninput="updateSickCount(this.value)"
-        style="flex: 1; margin: 0 10px;"
-      />
-      <span id="sickCountDisplay">5</span>
+                  <input
+                    type="range"
+                    name="range"
+                    id="range"
+                    min="0"
+                    max="10"
+                    value="5"
+                    oninput="updateSickCount(this.value)"
+                    style="flex: 1; margin: 0 10px;"
+                  />
+                  <span id="sickCountDisplay">5</span>
                 </td>
               </tr>
               <tr>
@@ -362,7 +370,6 @@ Description: Medical industry Form
                   <label for="uid">User ID:</label>
                 </td>
                 <td>
-                  <!-- Added onblur to trigger validateUid() -->
                   <input
                     type="text"
                     name="uid"
@@ -394,8 +401,6 @@ Description: Medical industry Form
                     onfocus="validatePword()"
                     placeholder="Password"
                   >
-                  <span class="error" id="pword-error"></span>
-    
                   <label for="cpword">Confirm Password:</label>
                   <input
                     type="password"
@@ -409,6 +414,12 @@ Description: Medical industry Form
                     oninput="confirmPword()"
                     onfocus="confirmPword()"
                   />
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td colspan="3">
+                  <span class="error" id="pword-error"></span><br>
                   <span class="error" id="pword2-error"></span>
                 </td>
               </tr>
@@ -422,7 +433,13 @@ Description: Medical industry Form
                       value="Review"
                       onclick="reviewInput()"
                     />
-                    <input type="submit" name="submit">
+                    <input
+                      type="button"
+                      id="validate"
+                      value="Validate & Submit"
+                      onclick="validateEverything()"
+                    />
+                    <input type="submit" name="submit" id="submit" style="display: none;" />
                     <input type="reset" name="reset">
                     <div class="pword-message">
                       <span id="msg1"></span> <br />
@@ -450,6 +467,12 @@ Description: Medical industry Form
       </footer>
     </div>
 
-    <script src="hw3.js"></script>
+    <script src="hw2.js"></script>
+    <div id="alert-box">
+      <div id="alert-content">
+        <h4>Please fill out all required fields correctly before submitting.</h4>
+        <button id="close-alert">OK</button>
+      </div>
+    </div>
   </body>
 </html>
