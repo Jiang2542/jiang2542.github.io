@@ -1,41 +1,74 @@
-// Program name: hw2.js
-// Author: Kevin Jiang
-// Date created: 03/01/2025
-// Date last edited: 03/09/2025
-// Version: 2.0
-// Description: Homework 2 JS file.
-// This is a supplement file to my HTML to check validation.
+// Remove duplicate definitions. In this version, each validation function only does its own check.
+function validateFname() {
+  let fname = document.getElementById("fname").value.trim();
+  let regex = /^[a-zA-Z'\-]{1,30}$/;
+  
+  if (!regex.test(fname)) {
+    document.getElementById("fname-error").innerHTML = "First name must be 1-30 letters, apostrophes, or dashes.";
+    return false;
+  } else {
+    document.getElementById("fname-error").innerHTML = "";
+    return true;
+  }
+}
 
-function updateSickCount(value) { 
-  // Shows the amount of sick days from the slider the patient selects.
-  document.getElementById("sickCountDisplay").innerHTML = value;
+function validateMini() {
+  // Validates middle initial to ensure it's a single uppercase letter.
+  let miniField = document.getElementById("mname");
+  let mini = miniField.value.trim().toUpperCase();
+  miniField.value = mini;  // Force uppercase in the field
+  const namePattern = /^[A-Z]?$/;
+  
+  if (mini && !namePattern.test(mini)) {
+    document.getElementById("mini-error").innerHTML = "Middle initial must be a single uppercase letter";
+    return false;
+  } else {
+    document.getElementById("mini-error").innerHTML = "";
+    return true;
+  }
+}
+
+// rest is just ensuring the correct valid values are put
+function validateLname() {
+  let lname = document.getElementById("lname").value.trim();
+  let regex = /^[a-zA-Z'\-]{1,30}$/;
+  
+  if (!regex.test(lname)) {
+    document.getElementById("lname-error").innerHTML = "Last name must be 1-30 letters, apostrophes, or dashes.";
+    return false;
+  } else {
+    document.getElementById("lname-error").innerHTML = "";
+    return true;
+  }
 }
 
 function validateDob() { 
-  // Ensures that the DOB meets requirements such as no future dates, 
-  // and that patients cannot be over 120 years old.
-  var dob = document.getElementById("dob");
-  let date = new Date(dob.value);
-  let maxDate = new Date().setFullYear(new Date().getFullYear() - 120);
-  
-  if (date > new Date()) {
-    document.getElementById("dob-error").innerHTML = "Date can't be in the future";
-    dob.value = "";
+  let dobField = document.getElementById("dob");
+  let dobValue = dobField.value;
+  if (!dobValue) {
+    document.getElementById("dob-error").innerHTML = "Please enter your date of birth";
     return false;
-  } else if (date < new Date(maxDate)) {
+  }
+  let date = new Date(dobValue);
+  let maxDate = new Date();
+  let minDate = new Date();
+  minDate.setFullYear(minDate.getFullYear() - 120);
+  
+  if (date > maxDate) {
+    document.getElementById("dob-error").innerHTML = "Date can't be in the future";
+    dobField.value = "";
+    return false;
+  } else if (date < minDate) {
     document.getElementById("dob-error").innerHTML = "Date can't be more than 120 years ago";
-    dob.value = "";
+    dobField.value = "";
     return false;
   } else {
     document.getElementById("dob-error").innerHTML = "";
-    validateEverything();
     return true;
   }
 }
 
 function validateSsn() { 
-  // Ensures that SSN is in the correct format.
-  // "Please enter valid SSN" will be displayed if the SSN input is not in the correct format.
   const ssn = document.getElementById("ssn").value;
   const ssnR = /^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$/;
   
@@ -44,39 +77,41 @@ function validateSsn() {
     return false;
   } else {
     document.getElementById("ssn-error").innerHTML = "";
-    validateEverything();
     return true;
   }
 }
 
-function validateZcode() {
-  // Ensures that the zipcode typed meets the requirements, and that this field cannot be blank.
-  const zipInput = document.getElementById("zcode");
-  let zip = zipInput.value.replace(/[^\d-]/g, "");
+function validatePhone() {
+  var phone = document.getElementById("phone").value;
+  var phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
   
-  if (!zip) {
-    document.getElementById("zcode-error").innerHTML = "Zipcode can't be blank";
+  if (!phoneRegex.test(phone)) {
+    document.getElementById("phone-error").innerHTML = "Phone number must be in format 000-000-0000";
     return false;
-  }
-  if (zip.length > 5) {
-    zip = zip.slice(0, 5) + "-" + zip.slice(5, 9);
   } else {
-    zip = zip.slice(0, 5);
+    document.getElementById("phone-error").innerHTML = "";
+    return true;
   }
-  zipInput.value = zip;
-  document.getElementById("zcode-error").innerHTML = "";
-  validateEverything();
-  return true;
+}
+
+function validateEmail() {
+  let emailInput = document.getElementById("cemail");
+  let email = emailInput.value.toLowerCase();
+  emailInput.value = email; // update the field to lowercase
+  let regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$/;
+  if (!regex.test(email)) {
+    document.getElementById("email-error").innerHTML = "Please enter a valid email address";
+    return false;
+  } else {
+    document.getElementById("email-error").innerHTML = "";
+    return true;
+  }
 }
 
 function validateUid() {
-  // Ensures that the username set by patients is valid.
-  // Checks that the field is not blank, does not start with a number,
-  // is at least 5 characters, does not exceed 30 characters,
-  // and only includes letters, numbers, underscores, and dashes.
-  let uidInput = document.getElementById("uid");
-  let uid = uidInput.value.toLowerCase();
-  uidInput.value = uid;
+  let uidField = document.getElementById("uid");
+  let uid = uidField.value.toLowerCase();
+  uidField.value = uid;
   
   if (uid.length === 0) {
     document.getElementById("uid-error").innerHTML = "User ID can't be blank";
@@ -98,49 +133,11 @@ function validateUid() {
     return false;
   } else {
     document.getElementById("uid-error").innerHTML = "";
-    validateEverything();
-    return true;
-  }
-}
-
-function validateEmail() {
-  // Ensures that the email value has the correct format.
-  let emailInput = document.getElementById("cemail");
-  let email = emailInput.value.toLowerCase(); // Force lowercase
-  emailInput.value = email; // Show corrected lowercase in the field
-
-  let regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$/;
-  if (!regex.test(email)) {
-    document.getElementById("email-error").innerHTML = "Please enter a valid email address";
-    validateEverything();
-    return false;
-  } else {
-    document.getElementById("email-error").innerHTML = "";
-    validateEverything();
-    return true;
-  }
-}
-
-function validatePhone() {
-  // Ensures that the phone number inputted is in the format 000-000-0000.
-  // Displays an error message if any other format is used.
-  var phone = document.getElementById("phone").value;
-  var phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
-  
-  if (!phoneRegex.test(phone)) {
-    document.getElementById("phone-error").innerHTML = "Phone number must be in format 000-000-0000";
-    return false;
-  } else {
-    document.getElementById("phone-error").innerHTML = "";
-    validateEverything();
     return true;
   }
 }
 
 function validatePword() {
-  // Ensures that the password field meets the requirements:
-  // at least one lowercase letter, one uppercase letter, one number, and one special character,
-  // and that the password does not contain the UID/username value.
   let pword = document.getElementById("pword").value;
   let uid = document.getElementById("uid").value;
   let errorMessage = [];
@@ -161,14 +158,11 @@ function validatePword() {
     return false;
   } else {
     document.getElementById("pword-error").innerHTML = "";
-    validateEverything();
     return true;
   }
 }
 
 function confirmPword() {
-  // Ensures that the password fields match.
-  // Displays whether passwords match or not.
   let pword1 = document.getElementById("pword").value;
   let pword2 = document.getElementById("cpword").value;
   
@@ -181,8 +175,101 @@ function confirmPword() {
   }
 }
 
+function validateAddress1() {
+  let addr1 = document.getElementById("address1").value.trim();
+  if (addr1.length < 2) {
+    document.getElementById("address1-error").innerHTML = "Address is too short";
+    return false;
+  } else {
+    document.getElementById("address1-error").innerHTML = "";
+    return true;
+  }
+}
+
+function validateCity() {
+  let city = document.getElementById("city").value.trim();
+  if (city.length === 0) {
+    document.getElementById("city-error").innerHTML = "City is required";
+    return false;
+  } else {
+    document.getElementById("city-error").innerHTML = "";
+    return true;
+  }
+}
+
+function validateZcode() {
+  const zipInput = document.getElementById("zcode");
+  let zip = zipInput.value.replace(/[^\d-]/g, "");
+  
+  if (!zip) {
+    document.getElementById("zcode-error").innerHTML = "Zipcode can't be blank";
+    return false;
+  }
+  if (zip.length > 5) {
+    zip = zip.slice(0, 5) + "-" + zip.slice(5, 9);
+  } else {
+    zip = zip.slice(0, 5);
+  }
+  zipInput.value = zip;
+  document.getElementById("zcode-error").innerHTML = "";
+  return true;
+}
+
+function showAlert() {
+  let alertBox = document.getElementById("alert-box");
+  let closeAlert = document.getElementById("close-alert");
+  alertBox.style.display = "block";
+  closeAlert.onclick = function () {
+    alertBox.style.display = "none";
+  };
+}
+
+// run when the validate button is pressed.
+function validateEverything() {
+  const validFname = validateFname();
+  const validMini = validateMini();
+  const validLname = validateLname();
+  const validDob = validateDob();
+  const validSsn = validateSsn();
+  const validPhone = validatePhone();
+  const validEmail = validateEmail();
+  const validUid = validateUid();
+  const validPword = validatePword();
+  const validConfirmPword = confirmPword();
+  const validAddress1 = validateAddress1();
+  const validCity = validateCity();
+  const validZip = validateZcode();
+  
+  // Validate Address 2.
+  const address2 = document.getElementById("address2").value.trim();
+  let validAddress2 = true;
+  if (address2 !== "" && /[^a-zA-Z0-9\s]/.test(address2)) {
+    document.getElementById("address2-error").innerHTML = "Invalid characters in Address 2";
+    validAddress2 = false;
+  } else {
+    document.getElementById("address2-error").innerHTML = "";
+  }
+  
+  const isValid = validFname && validMini && validLname && validDob && validSsn && validPhone &&
+                  validEmail && validUid && validPword && validConfirmPword &&
+                  validAddress1 && validCity && validZip && validAddress2;
+  
+  // makes the submit button invisiable or appear
+  const submitBtn = document.getElementById("submit");
+  if (isValid) {
+    submitBtn.style.display = "inline-block";
+    submitBtn.disabled = false;
+  } else {
+    submitBtn.style.display = "none";
+    submitBtn.disabled = true;
+    showAlert();
+  }
+  
+  return isValid;
+}
+
+// To display review
 function reviewInput() {
-  // Creates a review summary table displaying the values from the form for patients to review.
   var formcontent = document.getElementById("signup");
   var formoutput = "<table class='output'><th colspan='3'> Review Your Information:</th>";
   
@@ -209,130 +296,7 @@ function reviewInput() {
 }
 
 function removeReview() {
-  // Clears the review display that outputs form information.
   document.getElementById("showInput").innerHTML = "";
 }
 
-function validateFname() {
-  // Clears error for first name.
-  document.getElementById("fname-error").innerHTML = "";
-  return true;
-}
-
-function validateMname() {
-  // Clears error for middle name.
-  document.getElementById("mini-error").innerHTML = "";
-  return true;
-}
-
-function validateLname() {
-  // Clears error for last name.
-  document.getElementById("lname-error").innerHTML = "";
-  return true;
-}
-
-function validateAddress1() {
-  // Clears error for address1.
-  document.getElementById("address1-error").innerHTML = "";
-  return true;
-}
-
-function validateCity() {
-  // Clears error for city.
-  document.getElementById("city-error").innerHTML = "";
-  return true;
-}
-
-function showAlert() {
-  var alertBox = document.getElementById("alert-box");
-  var closeAlert = document.getElementById("close-alert");
-  alertBox.style.display = "block";
-  closeAlert.onclick = function () {
-    alertBox.style.display = "none";
-  };
-}
-
-function validateEverything() {
-  let isValid = true;
-
-  if (!validateFname()) isValid = false;
-  if (!validateMname()) isValid = false;
-  if (!validateLname()) isValid = false;
-  if (!validateDob()) isValid = false;
-  if (!validateSsn()) isValid = false;
-  if (!validatePhone()) isValid = false;
-  if (!validateEmail()) isValid = false;
-  if (!validateUid()) isValid = false;
-  if (!validatePword()) isValid = false;
-  if (!confirmPword()) isValid = false;
-  if (!validateAddress1()) isValid = false;
-  if (!validateCity()) isValid = false;
-  if (!validateZcode()) isValid = false;
-
-  // Validate additional conditions for Address 2.
-  const address2 = document.getElementById("address2").value.trim();
-  if (address2 !== "" && /[^a-zA-Z0-9\s]/.test(address2)) {
-    document.getElementById("address2-error").innerHTML = "Invalid characters in Address 2";
-    isValid = false;
-  } else {
-    document.getElementById("address2-error").innerHTML = "";
-  }
-
-  // Show or hide the actual Submit button based on validation.
-  const submitBtn = document.getElementById("submit");
-  if (isValid) {
-    submitBtn.style.display = "inline-block";
-    submitBtn.disabled = false;
-  } else {
-    submitBtn.style.display = "none";
-    submitBtn.disabled = true;
-    showAlert();
-  }
-}
-
-function validateMini() {
-  // Validates middle initial to ensure it's a single uppercase letter.
-  let mini = document.getElementById("mname").value.trim();
-  const namePattern = /^[A-Z]?$/;
-  mini = mini.toUpperCase();
-  document.getElementById("mname").value = mini;
-
-  if (mini && !mini.match(namePattern)) {
-    document.getElementById("mini-error").innerHTML = "Middle initial must be a single uppercase letter";
-    return false;
-  } else {
-    document.getElementById("mini-error").innerHTML = "";
-    validateEverything();
-    return true;
-  }
-}
-
-function validateFname() {
-  // Validates first name: must be no more than 30 letters, apostrophes, or dashes.
-  let fname = document.getElementById("fname").value.trim();
-  let regex = /^[a-zA-Z'\-]{1,30}$/;
-  
-  if (!regex.test(fname)) {
-    document.getElementById("fname-error").innerHTML = "First name must be no more than 30 letters, apostrophes, or dashes.";
-    return false;
-  }
-  
-  document.getElementById("fname-error").innerHTML = "";
-  validateEverything();
-  return true;
-}
-
-function validateLname() {
-  // Validates last name: must be no more than 30 letters, apostrophes, or dashes.
-  let lname = document.getElementById("lname").value.trim();
-  let regex = /^[a-zA-Z'\-]{1,30}$/;
-  
-  if (!regex.test(lname)) {
-    document.getElementById("lname-error").innerHTML = "Last name must be no more than 30 letters, apostrophes, or dashes.";
-    return false;
-  }
-  
-  document.getElementById("lname-error").innerHTML = "";
-  validateEverything();
-  return true;
-}
+//this ensures validation on the fly eorks
