@@ -1,0 +1,156 @@
+/*
+Program name: style.css
+Author: Kevin Jiang
+Date created: 01/29/2025
+Date last edited: The date you submitted it
+Version: 1.4
+Description: Medical industry Form CSS 
+*/
+body {
+  background-color: lightblue;
+  font-family: 'Courier New', monospace;
+  color: #333;
+  margin: 0;            /* reset default */
+}
+
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: lightblue;
+  padding: 4px 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+#header img#logo {
+  height: 40px;
+  width: auto;
+}
+
+#header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+#user-greeting {
+  text-align: center;
+  padding: 2px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #005f73;
+}
+
+/* push main content below header */
+body {
+  margin-top: 70px; 
+}
+
+
+/* IFrame container */
+
+.iframe-container {
+  position: fixed;
+  top: 75px;    /* header height (70px) + 5px gap */
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.iframe-container .frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* Fixed footer */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* ————————————————————— */
+/* Alert overlay */
+/* ————————————————————— */
+#alert-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+}
+
+#alert-content {
+  background-color: #fefefe;
+  border-radius: 10px;
+  width: 300px;
+  margin: 150px auto 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#alert-content h4 {
+  font-size: 18px;
+  font-family: 'Courier New', monospace;
+}
+
+#close-alert {
+  background-color: #4caf50;
+  border: 1px solid #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  height: 35px;
+  width: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-family: 'Courier New', monospace;
+}
+
+
+/* Table output & errors */
+
+table.output,
+tr.output,
+td.output {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+td.outputdata {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.error {
+  display: block;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.2;
+  color: red;
+}
+
+footer {
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+}
