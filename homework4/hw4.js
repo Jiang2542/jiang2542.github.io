@@ -318,9 +318,7 @@ function removeReview() {
   document.getElementById("showInput").innerHTML = "";
 }
 
-// ===========================================
 // Remember Me + Greeting + Cookie logic
-// ===========================================
 
 // Cookie helpers
 function setCookie(name, value, days) {
