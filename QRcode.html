@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            width: 128px;
+            height: 128px;
+            margin: 0 auto 3rem;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: #22d3ee;
+            margin: 0 auto 2rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 3rem;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        input {
+            width: 100%;
+            height: 56px;
+            background-color: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 28px;
+            padding: 0 1.5rem;
+            font-size: 1.125rem;
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input::placeholder {
+            color: #666666;
+        }
+
+        input:focus {
+            border-color: #22d3ee;
+        }
+
+        button {
+            width: 100%;
+            height: 48px;
+            background-color: #22d3ee;
+            color: #000000;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button:hover:not(:disabled) {
+            opacity: 0.9;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .qr-result {
+            margin-top: 3rem;
+        }
+
+        .qr-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            display: inline-block;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            width: auto;
+            padding: 0 2rem;
+            display: inline-block;
+        }
+
+        .placeholder {
+            padding: 3rem 0;
+            color: #666666;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://kjiang.org/logo.png" alt="Logo">
+        </div>
+
+        <h1>QR Code Generator</h1>
+        <div class="divider"></div>
+        <p class="subtitle">Create QR Codes</p>
+        <p class="description">Paste your link below to generate a QR code</p>
+
+        <div class="input-group">
+            <input 
+                type="text" 
+                id="urlInput" 
+                placeholder="Paste your link here..."
+                autocomplete="off"
+            >
+        </div>
+
+        <button id="generateBtn" disabled>Generate</button>
+
+        <div id="placeholder" class="placeholder">
+            Enter a URL above to generate your QR code
+        </div>
+
+        <div id="qrResult" class="qr-result hidden">
+            <div class="qr-container">
+                <canvas id="qrCanvas"></canvas>
+            </div>
+            <br>
+            <button id="downloadBtn" class="download-btn">Download QR Code</button>
+        </div>
+    </div>
+
+    <script>
+        const urlInput = document.getElementById('urlInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const qrCanvas = document.getElementById('qrCanvas');
+        const qrResult = document.getElementById('qrResult');
+        const placeholder = document.getElementById('placeholder');
+
+        // Enable/disable generate button based on input
+        urlInput.addEventListener('input', () => {
+            generateBtn.disabled = !urlInput.value.trim();
+        });
+
+        // Generate QR code
+        generateBtn.addEventListener('click', async () => {
+            const url = urlInput.value.trim();
+            if (!url) return;
+
+            try {
+                await QRCode.toCanvas(qrCanvas, url, {
+                    width: 300,
+                    margin: 2,
+                    color: {
+                        dark: '#000000',
+                        light: '#FFFFFF'
+                    }
+                });
+
+                placeholder.classList.add('hidden');
+                qrResult.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error generating QR code:', error);
+                alert('Failed to generate QR code. Please try again.');
+            }
+        });
+
+        // Download QR code
+        downloadBtn.addEventListener('click', () => {
+            const dataUrl = qrCanvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = dataUrl;
+            link.click();
+        });
+
+        // Allow Enter key to generate
+        urlInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !generateBtn.disabled) {
+                generateBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
