@@ -13,8 +13,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background-color: #faf8ef;
-            color: #776e65;
+            background-color: #0a0a0a;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -27,6 +27,21 @@
             width: 100%;
         }
 
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #4dd0e1;
+            padding: 8px;
+            background-color: #ffffff;
+        }
+
         .header {
             display: flex;
             justify-content: space-between;
@@ -37,7 +52,7 @@
         h1 {
             font-size: 4rem;
             font-weight: bold;
-            color: #776e65;
+            color: #ffffff;
         }
 
         .scores {
@@ -46,7 +61,8 @@
         }
 
         .score-box {
-            background-color: #bbada0;
+            background-color: #1a1a1a;
+            border: 2px solid #4dd0e1;
             padding: 0.5rem;
             border-radius: 0.375rem;
             color: white;
@@ -57,6 +73,7 @@
         .score-label {
             font-size: 0.75rem;
             font-weight: bold;
+            color: #4dd0e1;
         }
 
         .score-value {
@@ -65,7 +82,8 @@
         }
 
         .game-board {
-            background-color: #bbada0;
+            background-color: #1a1a1a;
+            border: 2px solid #4dd0e1;
             padding: 0.5rem;
             border-radius: 0.5rem;
             position: relative;
@@ -83,7 +101,7 @@
             position: absolute;
             width: 64px;
             height: 64px;
-            background-color: #cdc1b4;
+            background-color: #2a2a2a;
             border-radius: 0.375rem;
         }
 
@@ -100,17 +118,17 @@
             transition: all 0.15s ease-in-out;
         }
 
-        .tile-2 { background-color: #eee4da; color: #776e65; }
-        .tile-4 { background-color: #ede0c8; color: #776e65; }
-        .tile-8 { background-color: #f2b179; color: white; }
-        .tile-16 { background-color: #f59563; color: white; }
-        .tile-32 { background-color: #f67c5f; color: white; }
-        .tile-64 { background-color: #f65e3b; color: white; }
-        .tile-128 { background-color: #edcf72; color: white; font-size: 1.25rem; }
-        .tile-256 { background-color: #edcc61; color: white; font-size: 1.25rem; }
-        .tile-512 { background-color: #edc850; color: white; font-size: 1.25rem; }
-        .tile-1024 { background-color: #edc53f; color: white; font-size: 1rem; }
-        .tile-2048 { background-color: #edc22e; color: white; font-size: 1rem; }
+        .tile-2 { background-color: #3a3a3a; color: #ffffff; }
+        .tile-4 { background-color: #4a4a4a; color: #ffffff; }
+        .tile-8 { background-color: #4dd0e1; color: #0a0a0a; }
+        .tile-16 { background-color: #26c6da; color: #0a0a0a; }
+        .tile-32 { background-color: #00bcd4; color: #ffffff; }
+        .tile-64 { background-color: #00acc1; color: #ffffff; }
+        .tile-128 { background-color: #0097a7; color: #ffffff; font-size: 1.25rem; }
+        .tile-256 { background-color: #00838f; color: #ffffff; font-size: 1.25rem; }
+        .tile-512 { background-color: #006064; color: #ffffff; font-size: 1.25rem; }
+        .tile-1024 { background-color: #4dd0e1; color: #0a0a0a; font-size: 1rem; }
+        .tile-2048 { background-color: #26c6da; color: #0a0a0a; font-size: 1rem; }
 
         .tile-new {
             animation: appear 0.15s ease-in-out;
@@ -135,16 +153,17 @@
             margin-top: 1.5rem;
             font-size: 0.875rem;
             text-align: center;
+            color: #cccccc;
         }
 
         .new-game-btn {
             display: block;
             margin: 1.5rem auto 0;
             padding: 0.75rem 1.5rem;
-            background-color: #8f7a66;
-            color: white;
+            background-color: #4dd0e1;
+            color: #0a0a0a;
             border: none;
-            border-radius: 0.375rem;
+            border-radius: 2rem;
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
@@ -152,7 +171,7 @@
         }
 
         .new-game-btn:hover {
-            background-color: #9f8a76;
+            background-color: #26c6da;
         }
 
         .modal {
@@ -162,7 +181,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -173,7 +192,8 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: #1a1a1a;
+            border: 2px solid #4dd0e1;
             padding: 2rem;
             border-radius: 0.5rem;
             text-align: center;
@@ -184,17 +204,22 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            color: #776e65;
+            color: #ffffff;
         }
 
         .modal-description {
             margin-bottom: 1.5rem;
-            color: #776e65;
+            color: #cccccc;
         }
 
         @media (max-width: 640px) {
             h1 {
                 font-size: 3rem;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
             }
             
             .grid-container {
@@ -211,6 +236,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo-section">
+            <img src="https://kjiang.org/logo.png" alt="Logo" class="logo">
+        </div>
+
         <div class="header">
             <h1>2048</h1>
             <div class="scores">
@@ -227,7 +256,7 @@
 
         <div class="game-board">
             <div class="grid-container" id="grid-container">
-                 Background grid cells 
+                <!-- Background grid cells -->
             </div>
         </div>
 
