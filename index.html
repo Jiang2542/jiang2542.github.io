@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kevin Jiang</title>
+  <title>About Me</title>
   <style>
     * {
       margin: 0;
@@ -35,6 +35,17 @@
       gap: 2rem;
     }
 
+    /* Added logo styling */
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00d9ff;
+      box-shadow: 0 0 0 4px rgba(0, 217, 255, 0.2);
+    }
+
     h1 {
       font-size: 3.75rem;
       font-weight: bold;
@@ -64,23 +75,33 @@
     .links {
       display: flex;
       gap: 2rem;
-      justify-content: center;
+      justify-center: center;
       padding-top: 2rem;
     }
 
     a {
-      color: #a3a3a3;
+      color: #0a0a0a;
+      background-color: #00d9ff;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: all 0.2s;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      border: 2px solid #00d9ff;
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.2);
     }
 
     a:hover {
-      color: #00d9ff;
-      text-decoration: underline;
+      background-color: #00b8d4;
+      border-color: #00b8d4;
+      transform: translateY(-2px);
+      text-decoration: none;
+      box-shadow: 0 0 0 4px rgba(0, 217, 255, 0.3);
     }
 
     a.email {
-      color: #00d9ff;
+      background-color: #00d9ff;
+      color: #0a0a0a;
     }
 
     @media (min-width: 768px) {
@@ -97,6 +118,8 @@
 <body>
   <main>
     <div class="hero">
+      <img src="/logo.png?height=120&width=120" alt="Logo" class="logo">
+      
       <h1>Kevin Jiang</h1>
       
       <div class="divider"></div>
@@ -104,12 +127,11 @@
       <p class="tagline">Student</p>
       
       <p class="description">
-        This is a collection of stuff I am currently working on!
+        Collection of what I am working on
       </p>
       
       <div class="links">
-        <a href="https://kjiang.org target="_blank" rel="noopener noreferrer">Vildahlia Press Database Project Classwork</a>
-        <!-- <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"></a> -->
+        <a href="https://kjiang.org" class="email">MIS4374 Database Project</a>
       </div>
     </div>
   </main>
