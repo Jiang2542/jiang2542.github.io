@@ -1,22 +1,117 @@
-<center>
-      <h1>Kevin Jiang's Site <h1>
-      <h1>Thank you for visiting</h1>
-      <br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin Jiang</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<!-- 
-<br>
-      <br>
-      <a href="https://kjiang.org/homework2/patient-form.html" target="_blank" title="Assignment 2">
-        <h2>Please click here for Assignment 2</h2>
-@@ -24,7 +26,9 @@ <h2>Please click here for Assignment 2</h2>
-      <br>
-      <a href="https://kjiang.org/homework1/patient-form.html" target="_blank" title="Assignment 2">
-        <h2>Please click here for Assignment 1</h2>
-      </a>
-      </a> 
--->
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: #e5e5e5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      line-height: 1.5;
+    }
 
-            <iframe class="airtable-embed" src="https://airtable.com/embed/appwUnflagaGzWVjL/pagRwhL0kosycn3KE/form" frameborder="0" onmousewheel="" width="100%" height="1200" style="background: transparent; border: 1px solid #ccc;"></iframe>
-<br>
-            
-            <iframe class="airtable-embed" src="https://airtable.com/embed/appwUnflagaGzWVjL/pagIEcDbNq4Al46aV/form" frameborder="0" onmousewheel="" width="100%" height="1200" style="background: transparent; border: 1px solid #ccc;"></iframe>
+    main {
+      max-width: 48rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-size: 3.75rem;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .divider {
+      height: 1px;
+      width: 4rem;
+      background-color: #00d9ff;
+      margin: 0 auto;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: #a3a3a3;
+      line-height: 1.5;
+    }
+
+    .description {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    .links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      padding-top: 2rem;
+    }
+
+    a {
+      color: #a3a3a3;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #00d9ff;
+      text-decoration: underline;
+    }
+
+    a.email {
+      color: #00d9ff;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 6rem;
+      }
+
+      .tagline {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <h1>Kevin Jiang</h1>
+      
+      <div class="divider"></div>
+      
+      <p class="tagline">Student</p>
+      
+      <p class="description">
+        This is a collection of stuff I am currently working on!
+      </p>
+      
+      <div class="links">
+        <a href="https://kjiang.org target="_blank" rel="noopener noreferrer">Vildahlia Press Database Project Classwork</a>
+        <!-- <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"></a> -->
+      </div>
+    </div>
+  </main>
+</body>
+</html>
